@@ -54,15 +54,29 @@ class Casino
 		when 000
 			return 100
 		else
-			return 0
+			return -10
+		end
+	end
+
+	def money?
+		if @wallet > 0
+			return true
+		else
+			return false
 		end
 	end
 
 	def startGame
 		if checkingForThePossibilityOfAGame?
-			
-				puts checkRoll
-
+			while money?
+				puts "Хотите крутить? Y/N"
+				if gets.chomp == "Y" 
+					wallet = wallet + checkRoll
+				else
+					break
+				end
+			end
+			puts "У вас осталось #{@wallet}$"
 		else
 			puts "Вы не имеете права играть в азартные игры"
 		end
