@@ -1,13 +1,11 @@
-class Casino
-	attr_reader :year 
+class Human
+	attr_reader :year
+	attr_accessor :wallet
 	def initialize
-		@oneRoll = rand(10).to_s
-		@twoRoll = rand(10).to_s
-		@threeRoll = rand(10).to_s
 		@year = howManyYears.to_i
 		@wallet = 100
 	end
-
+	
 	def howManyYears
 		while true
 			print "Сколько вам лет => "
@@ -21,16 +19,26 @@ class Casino
 			end	
 		end
 	end
+end
 
-	def checkingForThePossibilityOfAGame?
-		if @year >= 18
-			return true
+class Casino
+	def rollMachin
+		@oneRoll = rand(10).to_s
+		@twoRoll = rand(10).to_s
+		@threeRoll = rand(10).to_s
+	end
+
+	def checkingForThePossibilityOfAGame?(year)
+		puts year
+		if year >= 18
+			return true 
 		else
 			return false
 		end
 	end
 
 	def checkRoll
+		rollMachin
 		puts roll = @oneRoll + @twoRoll + @threeRoll
 		case roll.to_i
 		when 111
@@ -58,30 +66,35 @@ class Casino
 		end
 	end
 
-	def money?
-		if @wallet > 0
-			return true
+	def money?(wallet)
+		if wallet > 0
+			return true 
 		else
 			return false
 		end
 	end
 
-	def startGame
-		if checkingForThePossibilityOfAGame?
-			while money?
-				puts "Хотите крутить? Y/N"
-				if gets.chomp == "Y" 
-					wallet = wallet + checkRoll
-				else
-					break
-				end
+	def startGame(wallet)
+		while money?(wallet)
+			puts "Хотите крутить? Y/N"
+			if gets.chomp == "Y"
+				wallet = wallet + checkRoll
+				puts "У вас осталось #{wallet}$"
+				puts
+			else
+				puts "У вас не осталось денег"
+				puts
+				break
 			end
-			puts "У вас осталось #{@wallet}$"
-		else
-			puts "Вы не имеете права играть в азартные игры"
 		end
 	end
 end
 
-game = Casino.new
-game.startGame
+casino = Casino.new
+gamers = Human.new
+if casino.checkingForThePossibilityOfAGame?(gamers.year)
+	puts "Добро поожаловать"
+	casino.startGame(gamers.wallet)
+else
+	puts "Вы не имеете права играть в азартные игры"
+end
