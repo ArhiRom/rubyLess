@@ -18,8 +18,7 @@ class Casino
 		end
 	end
 
-	def startGame(gamers)
-		wallet = gamers.wallet
+	def startGame(wallet)
 		while wallet > 0
 			print "Хотите крутить? Y/N => "
 			if yes?(gets.chomp.downcase)
