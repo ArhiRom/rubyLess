@@ -17,7 +17,7 @@ class Casino
 		while wallet > 0
 			print "Хотите крутить? Y/N => "
 			if yes?(gets.chomp.downcase)
-				wallet = wallet + check_roll
+				wallet += check_roll
 				puts "У вас осталось #{wallet}$"
 				puts
 			else
