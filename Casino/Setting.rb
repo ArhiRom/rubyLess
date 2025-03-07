@@ -7,6 +7,5 @@ def yes?(otv)
 end
 
 def checking_for_the_possibility_of_a_game?(year)
-	return true if year >= 18
-	false
+	year >= 18 ? true : false
 end
