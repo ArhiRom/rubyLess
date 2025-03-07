@@ -1,28 +1,23 @@
 class Casino
-	def rollMachin
+	def roll_nachin
 		roll = []
-		3.times do
-			roll << rand(10)
-		end
+		3.times { roll << rand(10) }
 		print roll
 		puts
-		return roll
+		roll
 	end
 
-	def checkRoll
-		roll = rollMachin.uniq
-		if roll.count == 1 
-			return roll[0]*10
-		else
-			return -10
-		end
+	def check_roll
+		roll = roll_nachin.uniq
+		roll.count == 1 ? roll[0]*10 : -10
 	end
 
-	def startGame(wallet)
+
+	def start_game(wallet)
 		while wallet > 0
 			print "Хотите крутить? Y/N => "
 			if yes?(gets.chomp.downcase)
-				wallet = wallet + checkRoll
+				wallet = wallet + check_roll
 				puts "У вас осталось #{wallet}$"
 				puts
 			else
