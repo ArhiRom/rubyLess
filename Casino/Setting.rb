@@ -1,12 +1,12 @@
 def yes?(otv)
 	arrYes = ["y", "yes", "ye", "да", "д"]
-	for i in arrYes do
+	for i in arrYes 
 		return true if otv == i
 	end
-	return false
+	false
 end
 
-def checkingForThePossibilityOfAGame?(year)
+def checking_for_the_possibility_of_a_game?(year)
 	return true if year >= 18
-	return false
+	false
 end
