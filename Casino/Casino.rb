@@ -16,6 +16,7 @@ class Casino
 	def start_game(wallet)
 		while wallet > 0
 			print "Хотите крутить? Y/N => "
+
 			if yes?(gets.chomp.downcase)
 				wallet += check_roll
 				puts "У вас осталось #{wallet}$"
