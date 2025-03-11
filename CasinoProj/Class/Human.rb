@@ -23,7 +23,6 @@ class Human < Wallet
 
 	def rand_rolling
 		@luck = rand(10) if @luck == 0
-		puts @luck
 	end
 
 	
