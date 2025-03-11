@@ -8,7 +8,24 @@ class Human < Wallet
 		@maxYears = 100
 		@year = how_many_years.to_i
 		@wallet = 100
+		@luck = rand(4)
 	end
+	
+	def check_luck
+		if @luck == 0
+			rand_rolling
+			true
+		else
+			@luck = @luck - 1
+			false
+		end
+	end
+
+	def rand_rolling
+		@luck = rand(10) if @luck == 0
+		puts @luck
+	end
+
 	
 	def how_many_years
 		while true
