@@ -10,7 +10,8 @@ class Casino < CasinoRulse
 
 	def rolling
 		roll = []
-		@numRoll.times { roll << rand(@numberOfDigits) }
+		luckRoll = rand(@numberOfDigits)
+		check_luck? ? @numRoll.times{ roll << luckRoll } : @numRoll.times { roll << rand(@numberOfDigits) }
 		print "#{roll}\n"
 		roll	
 	end
@@ -20,6 +21,9 @@ class Casino < CasinoRulse
 		roll.one? ? @gamer.autoRefill(roll.first*@multiplier) : @gamer.withdrawing(@multiplier)
 	end
 
+	def check_luck?
+		@gamer.check_luck ? true : false
+	end
 
 	def start_game
 		while checking_wallet?(@gamer.wallet)
